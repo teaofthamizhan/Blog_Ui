@@ -1,0 +1,39 @@
+<div class="admin-blogs">
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Manage Blog Posts</h1>
+    <div class="header-actions">
+      <a routerLink="/admin" class="btn btn-secondary">← Back to Dashboard</a>
+      <button class="btn btn-primary">+ Write New Post</button>
+    </div>
+  </section>
+
+  <!-- Blogs Table -->
+  <section class="blogs-section">
+    <div class="table-wrapper">
+      <table class="blogs-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let blog of blogs">
+            <td class="title">{{ blog.title }}</td>
+            <td class="author">{{ blog.author }}</td>
+            <td class="category">{{ blog.category }}</td>
+            <td class="date">{{ blog.date | date: 'MMM d, yyyy' }}</td>
+            <td class="actions">
+              <button class="btn-edit">Edit</button>
+              <button class="btn-delete" (click)="deleteBlog(blog.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

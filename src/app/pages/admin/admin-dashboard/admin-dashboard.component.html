@@ -1,0 +1,42 @@
+<div class="admin-dashboard">
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Admin Dashboard</h1>
+    <p>Manage your content and products</p>
+  </section>
+
+  <!-- Dashboard Content -->
+  <section class="dashboard-content">
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Total Products</h3>
+        <p class="stat-number">{{ teaCount }}</p>
+        <a routerLink="/admin/products" class="stat-link">Manage Products →</a>
+      </div>
+
+      <div class="stat-card">
+        <h3>Total Blog Posts</h3>
+        <p class="stat-number">{{ blogCount }}</p>
+        <a routerLink="/admin/blogs" class="stat-link">Manage Blogs →</a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="quick-links">
+      <h2>Quick Actions</h2>
+      <div class="links-grid">
+        <a routerLink="/admin/products" class="action-card">
+          <span class="icon">📦</span>
+          <h3>Manage Products</h3>
+          <p>Add, edit, or delete tea products</p>
+        </a>
+        <a routerLink="/admin/blogs" class="action-card">
+          <span class="icon">📝</span>
+          <h3>Manage Blog Posts</h3>
+          <p>Create and edit blog articles</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>

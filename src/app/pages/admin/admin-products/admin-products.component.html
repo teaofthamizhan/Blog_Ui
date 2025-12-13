@@ -1,0 +1,39 @@
+<div class="admin-products">
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Manage Products</h1>
+    <div class="header-actions">
+      <a routerLink="/admin" class="btn btn-secondary">← Back to Dashboard</a>
+      <button class="btn btn-primary">+ Add New Product</button>
+    </div>
+  </section>
+
+  <!-- Products Table -->
+  <section class="products-section">
+    <div class="table-wrapper">
+      <table class="products-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Featured</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td class="name">{{ product.name }}</td>
+            <td class="category">{{ product.category | titlecase }}</td>
+            <td class="price">₹{{ product.price }}</td>
+            <td class="featured">{{ product.featured ? 'Yes' : 'No' }}</td>
+            <td class="actions">
+              <button class="btn-edit">Edit</button>
+              <button class="btn-delete" (click)="deleteProduct(product.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

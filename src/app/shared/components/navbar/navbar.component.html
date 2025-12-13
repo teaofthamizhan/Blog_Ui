@@ -1,0 +1,25 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <a routerLink="/" class="brand-link">
+        <span class="brand-icon">🍵</span>
+        <span class="brand-name">My Tea of Thamizhan</span>
+      </a>
+    </div>
+
+    <button class="menu-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="navbar-menu" [class.active]="isMenuOpen()">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Home</a></li>
+      <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About</a></li>
+      <li><a routerLink="/products" routerLinkActive="active" (click)="closeMenu()">Products</a></li>
+      <li><a routerLink="/blog" routerLinkActive="active" (click)="closeMenu()">Blog</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a></li>
+      <li class="admin-link"><a routerLink="/admin" routerLinkActive="active" (click)="closeMenu()">Admin</a></li>
+    </ul>
+  </div>
+</nav>

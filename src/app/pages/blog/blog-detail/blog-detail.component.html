@@ -1,0 +1,43 @@
+<div class="blog-detail-page" *ngIf="!isLoading">
+  <div *ngIf="blog" class="blog-container">
+    <!-- Article Header -->
+    <article class="blog-article">
+      <header class="article-header">
+        <h1>{{ blog.title }}</h1>
+        <div class="article-meta">
+          <span class="category">{{ blog.category }}</span>
+          <span class="date">{{ blog.date | date: 'MMMM d, yyyy' }}</span>
+          <span class="read-time">{{ blog.readTime }} min read</span>
+        </div>
+        <div class="article-author">
+          <span class="author-name">By {{ blog.author }}</span>
+        </div>
+      </header>
+
+      <figure class="article-image">
+        <img [src]="blog.image" [alt]="blog.title">
+      </figure>
+
+      <div class="article-content">
+        <p>{{ blog.content }}</p>
+      </div>
+
+      <footer class="article-footer">
+        <div class="tags">
+          <span *ngFor="let tag of blog.tags" class="tag">#{{ tag }}</span>
+        </div>
+      </footer>
+    </article>
+
+    <!-- Back to Blog -->
+    <div class="back-link">
+      <a routerLink="/blog">← Back to Blog</a>
+    </div>
+  </div>
+
+  <div *ngIf="!blog" class="not-found">
+    <h2>Blog post not found</h2>
+    <p>The article you're looking for doesn't exist.</p>
+    <a routerLink="/blog" class="btn btn-primary">Back to Blog</a>
+  </div>
+</div>

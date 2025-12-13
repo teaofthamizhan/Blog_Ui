@@ -1,0 +1,147 @@
+.blog-detail-page {
+  min-height: 100vh;
+  background: white;
+  padding: 2rem 1.5rem;
+
+  .blog-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .blog-article {
+    margin-bottom: 3rem;
+
+    .article-header {
+      text-align: center;
+      margin-bottom: 2rem;
+
+      h1 {
+        font-size: 2.5rem;
+        color: #2d5016;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        line-height: 1.3;
+      }
+
+      .article-meta {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+
+        .category {
+          background: #2d5016;
+          color: #a8e63d;
+          padding: 0.4rem 0.8rem;
+          border-radius: 4px;
+          font-weight: 600;
+          text-transform: uppercase;
+          font-size: 0.75rem;
+          letter-spacing: 0.5px;
+        }
+
+        .date, .read-time {
+          color: #888;
+        }
+      }
+
+      .article-author {
+        color: #7a8f6d;
+        font-weight: 500;
+      }
+    }
+
+    .article-image {
+      margin: 0 0 2rem;
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .article-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #333;
+      margin-bottom: 2rem;
+
+      p {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .article-footer {
+      padding-top: 2rem;
+      border-top: 1px solid #e8f0e8;
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+
+        .tag {
+          color: #7a8f6d;
+          font-weight: 500;
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+
+  .back-link {
+    text-align: center;
+    margin-top: 2rem;
+
+    a {
+      color: #2d5016;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #a8e63d;
+      }
+    }
+  }
+
+  .not-found {
+    text-align: center;
+    padding: 4rem 1.5rem;
+
+    h2 {
+      color: #2d5016;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    p {
+      color: #888;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      &.btn-primary {
+        padding: 0.85rem 2rem;
+        background: #a8e63d;
+        color: #2d5016;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-decoration: none;
+
+        &:hover {
+          background: #c8ff5a;
+        }
+      }
+    }
+  }
+}

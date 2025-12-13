@@ -1,0 +1,31 @@
+<div class="product-card">
+  <div class="card-image">
+    <img [src]="tea.image" [alt]="tea.name" loading="lazy">
+    <span class="category-badge">{{ tea.category | titlecase }}</span>
+  </div>
+  <div class="card-content">
+    <h3>{{ tea.name }}</h3>
+    <p class="origin">{{ tea.origin }}</p>
+    <p class="description">{{ tea.description }}</p>
+    
+    <div class="benefits">
+      <span *ngFor="let benefit of tea.benefits" class="benefit-tag">{{ benefit }}</span>
+    </div>
+
+    <div class="brew-info">
+      <div class="info-item">
+        <span class="label">Steep:</span>
+        <span class="value">{{ tea.steep_time }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Temp:</span>
+        <span class="value">{{ tea.temperature }}</span>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <span class="price">₹{{ tea.price }}</span>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+</div>

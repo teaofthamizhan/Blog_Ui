@@ -1,0 +1,18 @@
+<div class="blog-list-page">
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Our Blog</h1>
+    <p>Stories, insights, and wisdom about tea and Tamil culture</p>
+  </section>
+
+  <!-- Blog Grid -->
+  <section class="blog-grid-section">
+    <div class="blog-grid">
+      <app-blog-card *ngFor="let blog of blogs" [blog]="blog"></app-blog-card>
+    </div>
+
+    <div *ngIf="blogs.length === 0" class="no-blogs">
+      <p>No blog posts yet. Check back soon!</p>
+    </div>
+  </section>
+</div>
