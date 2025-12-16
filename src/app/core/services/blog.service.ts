@@ -10,13 +10,13 @@ export class BlogService {
     {
       id: '1',
       title: 'The Ancient Art of Tamil Tea Tradition',
-      excerpt: 'Discover how tea culture has been woven into Tamil heritage for centuries.',
-      content: `Tea has been an integral part of Tamil culture for over two millennia. From the 
-        ancient Sangam period to modern times, tea (or "chai" as it's lovingly called) represents 
+      excerpt: 'Journey through millennia as we reveal how tea culture has been woven into the very fabric of Tamil identity, from ancient kingdoms to your morning cup.',
+      content: `Tea has been an integral part of Tamil culture for over two millennia. From the
+        ancient Sangam period to modern times, tea (or "chai" as it's lovingly called) represents
         more than just a beverage—it's a cultural symbol of hospitality, togetherness, and tradition.
-        
-        In Tamil Nadu, tea plantations cover the misty hills of the Nilgiris, 
-        where our finest teas are cultivated with care and respect for nature. Each cup tells 
+
+        In Tamil Nadu, tea plantations cover the misty hills of the Nilgiris,
+        where our finest teas are cultivated with care and respect for nature. Each cup tells
         a story of heritage, passion, and the land's rich biodiversity.`,
       author: 'Aarjun Desikan',
       date: new Date('2024-01-15'),
@@ -28,13 +28,13 @@ export class BlogService {
     {
       id: '2',
       title: 'Health Benefits of Green Tea: Science Meets Tradition',
-      excerpt: 'Explore the scientifically-proven health benefits of green tea enjoyed for centuries.',
-      content: `Green tea is not just a beverage; it's a wellness elixir backed by modern science. 
-        Rich in antioxidants called catechins, green tea has been shown to support metabolism, 
+      excerpt: 'Discover the remarkable power hidden in every leaf—where ancient wisdom and modern science converge to reveal tea\'s transformative gifts for body and mind.',
+      content: `Green tea is not just a beverage; it's a wellness elixir backed by modern science.
+        Rich in antioxidants called catechins, green tea has been shown to support metabolism,
         improve focus, and promote heart health.
-        
-        Our Jasmine Green Tea combines the delicate flavors of green tea with aromatic jasmine flowers, 
-        creating a drink that pleases both the palate and the body. Whether enjoyed in the morning 
+
+        Our Jasmine Green Tea combines the delicate flavors of green tea with aromatic jasmine flowers,
+        creating a drink that pleases both the palate and the body. Whether enjoyed in the morning
         for a gentle energy boost or in the afternoon for relaxation, green tea adapts to your needs.`,
       author: 'Priya Shankar',
       date: new Date('2024-01-10'),
@@ -46,12 +46,12 @@ export class BlogService {
     {
       id: '3',
       title: 'Brewing the Perfect Cup: A Beginner\'s Guide',
-      excerpt: 'Learn the secrets to brewing the perfect cup of tea at home.',
-      content: `The art of brewing tea is simple yet nuanced. Temperature, steeping time, and water quality 
+      excerpt: 'Unlock the secrets of tea mastery with our step-by-step guide—because the perfect cup isn\'t luck, it\'s an art that anyone can learn.',
+      content: `The art of brewing tea is simple yet nuanced. Temperature, steeping time, and water quality
         all play crucial roles in extracting the perfect flavor from your tea leaves.
-        
-        Different teas require different approaches: delicate white teas prefer cooler water and shorter 
-        steep times, while robust black teas thrive in hotter water. Our guide provides specific recommendations 
+
+        Different teas require different approaches: delicate white teas prefer cooler water and shorter
+        steep times, while robust black teas thrive in hotter water. Our guide provides specific recommendations
         for each tea variety, ensuring you get the most from your cup.`,
       author: 'Rajesh Kumar',
       date: new Date('2024-01-05'),
@@ -63,12 +63,12 @@ export class BlogService {
     {
       id: '4',
       title: 'Sustainable Tea Sourcing: Our Commitment',
-      excerpt: 'How we ensure our tea is sourced responsibly and sustainably.',
-      content: `At My Tea of Thamizhan, sustainability isn't just a buzzword—it's our commitment 
-        to future generations. We work directly with tea farmers in Tamil Nadu to ensure fair wages, 
+      excerpt: 'Learn how every cup you drink contributes to a greater purpose—supporting Tamil farmers, protecting ecosystems, and building a legacy of sustainability.',
+      content: `At My Tea of Thamizhan, sustainability isn't just a buzzword—it's our commitment
+        to future generations. We work directly with tea farmers in Tamil Nadu to ensure fair wages,
         proper working conditions, and environmentally conscious practices.
-        
-        By choosing our teas, you're supporting local communities and preserving the natural ecosystems 
+
+        By choosing our teas, you're supporting local communities and preserving the natural ecosystems
         that make Tamil Nadu's tea regions so special.`,
       author: 'Ananya Iyer',
       date: new Date('2023-12-28'),

@@ -5,9 +5,29 @@
   </div>
   <div class="card-content">
     <h3>{{ tea.name }}</h3>
-    <p class="origin">{{ tea.origin }}</p>
+    <p class="origin">🌿 {{ tea.origin }}</p>
     <p class="description">{{ tea.description }}</p>
-    
+
+    <div class="tea-profiles" *ngIf="tea.aromaProfile || tea.tasteProfile">
+      <div class="profile-item" *ngIf="tea.aromaProfile">
+        <span class="profile-label">Aroma:</span>
+        <span class="profile-value">{{ tea.aromaProfile }}</span>
+      </div>
+      <div class="profile-item" *ngIf="tea.tasteProfile">
+        <span class="profile-label">Taste:</span>
+        <span class="profile-value">{{ tea.tasteProfile }}</span>
+      </div>
+    </div>
+
+    <div class="best-time" *ngIf="tea.bestTime">
+      <span class="time-label">Best Time:</span>
+      <span class="time-value">{{ tea.bestTime | titlecase }}</span>
+    </div>
+
+    <p class="cultural-reference" *ngIf="tea.culturalReference">
+      <em>✨ {{ tea.culturalReference }}</em>
+    </p>
+
     <div class="benefits">
       <span *ngFor="let benefit of tea.benefits" class="benefit-tag">{{ benefit }}</span>
     </div>

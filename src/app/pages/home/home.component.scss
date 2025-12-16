@@ -103,6 +103,47 @@
   }
 }
 
+/* Philosophy Section */
+.philosophy-section {
+  padding: 4rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #faf9f6 0%, #f5f3f0 100%);
+
+  .philosophy-content {
+    max-width: 800px;
+    margin: 0 auto;
+
+    h2 {
+      font-size: 2.5rem;
+      color: #2d5016;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      text-align: center;
+
+      @media (max-width: 768px) {
+        font-size: 1.75rem;
+      }
+    }
+
+    .philosophy-text {
+      p {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+      }
+
+      .emphasis {
+        font-size: 1.1rem;
+        color: #2d5016;
+        font-weight: 600;
+        margin-top: 2rem;
+      }
+    }
+  }
+}
+
 /* Section Styling */
 .section-header {
   text-align: center;
@@ -111,7 +152,7 @@
   h2 {
     font-size: 2.5rem;
     color: #2d5016;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
     font-weight: 700;
 
     @media (max-width: 768px) {
@@ -119,9 +160,25 @@
     }
   }
 
-  p {
-    font-size: 1.1rem;
-    color: #7a8f6d;
+  .intro-text {
+    p {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 1rem;
+      line-height: 1.7;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .blog-intro-highlight {
+      font-weight: 600;
+      color: #2d5016;
+      background: rgba(168, 230, 61, 0.1);
+      padding: 1rem;
+      border-left: 3px solid #a8e63d;
+      border-radius: 4px;
+    }
   }
 }
 
