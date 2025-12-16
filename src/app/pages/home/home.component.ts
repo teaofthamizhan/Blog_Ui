@@ -11,7 +11,7 @@ import { BlogPost } from '../../core/models/blog.model';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, ProductCardComponent, BlogCardComponent],
+  imports: [CommonModule, RouterLink, BlogCardComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
