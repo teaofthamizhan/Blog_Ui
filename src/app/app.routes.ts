@@ -8,15 +8,19 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
 import { AdminProductsComponent } from './pages/admin/admin-products/admin-products.component';
 import { AdminBlogsComponent } from './pages/admin/admin-blogs/admin-blogs.component';
+import { AdminContactMessagesComponent } from './pages/admin/admin-contact-messages/admin-contact-messages.component';
+import { AdminSubscribersComponent } from './pages/admin/admin-subscribers/admin-subscribers.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'blog', component: BlogListComponent },
-  { path: 'blog/:id', component: BlogDetailComponent },
+  { path: 'blog/:slug', component: BlogDetailComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'admin', component: AdminDashboardComponent },
   { path: 'admin/products', component: AdminProductsComponent },
-  { path: 'admin/blogs', component: AdminBlogsComponent }
+  { path: 'admin/blogs', component: AdminBlogsComponent },
+  { path: 'admin/contact-messages', component: AdminContactMessagesComponent },
+  { path: 'admin/subscribers', component: AdminSubscribersComponent }
 ];

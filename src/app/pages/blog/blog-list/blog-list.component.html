@@ -2,19 +2,42 @@
   <!-- Page Header -->
   <section class="page-header">
     <h1>Voices of Tea & Culture</h1>
-    <div class="page-intro">
-      <p>Dive into our collection of stories, insights, and wisdom about tea, Tamil heritage, health, and sustainable living. Whether you're a seasoned tea enthusiast or just beginning your journey, find inspiration and knowledge in every article.</p>
-    </div>
   </section>
 
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-error">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-container">
+    <p>Loading blog posts...</p>
+  </div>
+
   <!-- Blog Grid -->
-  <section class="blog-grid-section">
+  <section *ngIf="!isLoading" class="blog-grid-section">
     <div class="blog-grid">
       <app-blog-card *ngFor="let blog of blogs" [blog]="blog"></app-blog-card>
     </div>
 
     <div *ngIf="blogs.length === 0" class="no-blogs">
+      <img src="images/empty-state.png" alt="No blogs yet" class="empty-state-img">
       <p>No blog posts yet. Check back soon!</p>
+    </div>
+
+    <!-- Pagination -->
+    <div *ngIf="totalPages > 1" class="pagination">
+      <button class="pagination-btn" (click)="goToPage(currentPage - 1)" [disabled]="!hasPreviousPage">
+        ← Previous
+      </button>
+
+      <div class="pagination-info">
+        Page {{ currentPage + 1 }} of {{ totalPages }}
+      </div>
+
+      <button class="pagination-btn" (click)="goToPage(currentPage + 1)" [disabled]="!hasNextPage">
+        Next →
+      </button>
     </div>
   </section>
 </div>

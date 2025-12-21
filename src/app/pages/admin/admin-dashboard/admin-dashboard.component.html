@@ -3,7 +3,8 @@
   <section class="page-header">
     <h1>Your Command Center</h1>
     <div class="page-intro">
-      <p>Welcome to the admin dashboard. Here you have complete control over your tea collection and blog content. Manage products, create stories, and keep your tea sanctuary thriving with fresh, engaging content.</p>
+      <p>Welcome to the admin dashboard. Here you have complete control over your tea collection and blog content.
+        Manage products, create stories, and keep your tea sanctuary thriving with fresh, engaging content.</p>
     </div>
   </section>
 
@@ -22,6 +23,18 @@
         <p class="stat-number">{{ blogCount }}</p>
         <a routerLink="/admin/blogs" class="stat-link">Manage Blogs →</a>
       </div>
+
+      <div class="stat-card">
+        <h3>Contact Messages</h3>
+        <p class="stat-number">{{ contactMessageCount }}</p>
+        <a routerLink="/admin/contact-messages" class="stat-link">View Messages →</a>
+      </div>
+
+      <div class="stat-card">
+        <h3>Newsletter Subscribers</h3>
+        <p class="stat-number">{{ subscriberCount }}</p>
+        <a routerLink="/admin/subscribers" class="stat-link">Manage Subscribers →</a>
+      </div>
     </div>
 
     <!-- Quick Links -->
@@ -38,6 +51,55 @@
           <h3>Manage Blog Posts</h3>
           <p>Create and edit blog articles</p>
         </a>
+        <a routerLink="/admin/contact-messages" class="action-card">
+          <span class="icon">💬</span>
+          <h3>Contact Messages</h3>
+          <p>View and manage contact form submissions</p>
+        </a>
+        <a routerLink="/admin/subscribers" class="action-card">
+          <span class="icon">📧</span>
+          <h3>Newsletter Subscribers</h3>
+          <p>Manage your newsletter subscriber list</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="recent-activity">
+      <div class="activity-grid">
+        <div class="activity-widget">
+          <div class="widget-header">
+            <h2>Recent Blog Posts</h2>
+            <a routerLink="/admin/blogs" class="view-all">View All</a>
+          </div>
+          <div class="activity-list">
+            <div *ngFor="let blog of recentBlogs" class="activity-item">
+              <div class="activity-info">
+                <h4>{{ blog.title }}</h4>
+                <span class="activity-meta">{{ blog.createdAt | date:'shortDate' }} • {{ blog.category }}</span>
+              </div>
+              <span class="status-badge" [ngClass]="'status-' + (blog.status | lowercase)">{{ blog.status }}</span>
+            </div>
+            <p *ngIf="recentBlogs.length === 0" class="no-activity">No recent blog posts.</p>
+          </div>
+        </div>
+
+        <div class="activity-widget">
+          <div class="widget-header">
+            <h2>Latest Messages</h2>
+            <a routerLink="/admin/contact-messages" class="view-all">View All</a>
+          </div>
+          <div class="activity-list">
+            <div *ngFor="let msg of recentMessages" class="activity-item">
+              <div class="activity-info">
+                <h4>{{ msg.name }}</h4>
+                <p class="activity-preview">{{ msg.message | slice:0:60 }}...</p>
+                <span class="activity-meta">{{ msg.createdAt | date:'short' }}</span>
+              </div>
+            </div>
+            <p *ngIf="recentMessages.length === 0" class="no-activity">No recent messages.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>

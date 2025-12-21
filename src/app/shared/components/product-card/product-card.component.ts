@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { Tea } from '../../../core/models/tea.model';
 
 @Component({
@@ -12,4 +11,8 @@ import { Tea } from '../../../core/models/tea.model';
 })
 export class ProductCardComponent {
   @Input() tea!: Tea;
+
+  onImageError(event: any) {
+    event.target.src = 'images/default-tea.png';
+  }
 }

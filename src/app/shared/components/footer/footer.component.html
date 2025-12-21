@@ -1,7 +1,10 @@
 <footer class="footer">
   <div class="footer-content">
     <div class="footer-section">
-      <h3>Tea of Thamizhan</h3>
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="Tea of Thamizhan Logo" class="footer-logo">
+        <h3>Tea of Thamizhan</h3>
+      </div>
       <p>Bringing authentic Tamil tea heritage to the world, one cup at a time.</p>
       <div class="social-links">
         <a href="#" class="social-icon" title="Facebook">f</a>
@@ -24,21 +27,36 @@
     <div class="footer-section">
       <h4>Contact</h4>
       <p>Email: teaofthamizhan.2025&#64;gmail.com</p>
-      <p>Phone: <a href="tel:+91-969835438">+91-969835438</a></p>
+      <p>Phone: <a href="tel:+91-9698035438">+91-9698035438</a></p>
       <p>Address: Tamil Nadu, India</p>
     </div>
 
     <div class="footer-section">
       <h4>Newsletter</h4>
       <p>Subscribe for exclusive tea stories and special offers.</p>
-      <form class="newsletter-form">
-        <input type="email" placeholder="Your email" required>
-        <button type="submit">Subscribe</button>
+
+      <!-- Success Message -->
+      <div *ngIf="successMessage" class="newsletter-message success">
+        {{ successMessage }}
+      </div>
+
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="newsletter-message error">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Newsletter Form -->
+      <form class="newsletter-form" (submit)="onSubscribe($event)">
+        <input type="email" [(ngModel)]="email" name="email" placeholder="Your email" required
+          [disabled]="isSubmitting">
+        <button type="submit" [disabled]="isSubmitting">
+          {{ isSubmitting ? 'Subscribing...' : 'Subscribe' }}
+        </button>
       </form>
     </div>
   </div>
 
   <div class="footer-bottom">
-    <p>&copy; {{ currentYear }} My Tea of Thamizhan. All rights reserved.</p>
+    <p>&copy; {{ currentYear }} Tea of Thamizhan. All rights reserved.</p>
   </div>
 </footer>

@@ -1,0 +1,442 @@
+.admin-contact-messages {
+  min-height: 100vh;
+  background: white;
+}
+
+.page-header {
+  background: linear-gradient(135deg, #1b3022 0%, #2d5c3f 100%);
+  color: white;
+  padding: 3rem 1.5rem;
+
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+    padding-left: 600px;
+  }
+
+  .page-intro {
+    margin-bottom: 1.5rem;
+
+    p {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0;
+      padding-left: 300px;
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+
+    &.btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+
+      &:hover {
+        background: white;
+        color: #1b3022;
+      }
+    }
+  }
+}
+
+.loading-state {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: #666;
+}
+
+.search-filter-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 0;
+
+  .search-filter-bar {
+    display: flex;
+    gap: 1rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    .search-box {
+      flex: 1;
+      position: relative;
+
+      input {
+        width: 100%;
+        padding: 0.75rem 1rem 0.75rem 2.5rem;
+        border: 2px solid #e8e4db;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+
+        &:focus {
+          outline: none;
+          border-color: #c5a059;
+          box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.1);
+        }
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #888;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.messages-section {
+  padding: 3rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .table-wrapper {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+  }
+
+  .messages-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+      background: #fdfbf7;
+      border-bottom: 2px solid #e0e8d8;
+
+      th {
+        padding: 1rem;
+        text-align: left;
+        font-weight: 600;
+        color: #1b3022;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #e8e4db;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+          background-color: #faf9f6;
+        }
+
+        td {
+          padding: 1rem;
+          color: #555;
+          font-size: 0.95rem;
+
+          &.name {
+            font-weight: 600;
+            color: #1b3022;
+          }
+
+          &.email {
+            color: #666;
+            word-break: break-all;
+          }
+
+          &.message-preview {
+            color: #888;
+            font-size: 0.9rem;
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          &.date {
+            color: #999;
+            font-size: 0.9rem;
+            white-space: nowrap;
+          }
+
+          &.actions {
+            display: flex;
+            gap: 0.5rem;
+
+            button {
+              padding: 0.5rem 1rem;
+              border: none;
+              border-radius: 4px;
+              font-weight: 600;
+              cursor: pointer;
+              transition: all 0.2s ease;
+              font-size: 0.85rem;
+
+              &.btn-view {
+                background: #c5a059;
+                color: #1b3022;
+
+                &:hover {
+                  background: #dfc58d;
+                }
+              }
+
+              &.btn-delete {
+                background: #ffebee;
+                color: #c62828;
+
+                &:hover {
+                  background: #ef5350;
+                  color: white;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .no-messages {
+    padding: 3rem 1.5rem;
+    text-align: center;
+    color: #999;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #fdfbf7;
+    border-top: 1px solid #e0e8d8;
+
+    .btn-pagination {
+      padding: 0.5rem 1.5rem;
+      background: #c5a059;
+      color: #1b3022;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+
+      &:hover:not(:disabled) {
+        background: #dfc58d;
+      }
+
+      &:disabled {
+        background: #e0e8d8;
+        color: #999;
+        cursor: not-allowed;
+      }
+    }
+
+    .page-info {
+      color: #1b3022;
+      font-weight: 600;
+      min-width: 150px;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .messages-section .messages-table {
+    font-size: 0.85rem;
+
+    thead th,
+    tbody td {
+      padding: 0.75rem;
+    }
+
+    tbody td.message-preview {
+      display: none;
+    }
+
+    tbody td.actions {
+      flex-direction: column;
+      gap: 0.25rem;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Modal Styles
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(27, 48, 34, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: white;
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  animation: modalFadeIn 0.3s ease-out;
+
+  .modal-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e8e4db;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      margin: 0;
+      color: #1b3022;
+      font-size: 1.5rem;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #888;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #ff6b6b;
+      }
+    }
+  }
+
+  .message-details-content {
+    padding: 2rem;
+    overflow-y: auto;
+
+    .detail-group {
+      margin-bottom: 1.5rem;
+
+      label {
+        display: block;
+        font-weight: 700;
+        color: #1b3022;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.4rem;
+      }
+
+      .detail-value {
+        font-size: 1.1rem;
+        color: #333;
+        background: #fdfbf7;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        border: 1px solid #e8e4db;
+      }
+    }
+
+    .message-body-container {
+      label {
+        display: block;
+        font-weight: 700;
+        color: #1b3022;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.4rem;
+      }
+
+      .message-text {
+        font-size: 1.05rem;
+        color: #444;
+        line-height: 1.6;
+        background: #fdfbf7;
+        padding: 1.25rem;
+        border-radius: 8px;
+        border: 1px solid #e8e4db;
+        white-space: pre-wrap;
+        min-height: 150px;
+      }
+    }
+  }
+
+  .modal-footer {
+    padding: 1.5rem 2rem;
+    border-top: 1px solid #e8e4db;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    .btn-secondary-action {
+      background: #fdfbf7;
+      color: #1b3022;
+      border: 2px solid #e8e4db;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #f5f2e8;
+      }
+    }
+
+    .btn-delete-action {
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #ff5252;
+      }
+    }
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

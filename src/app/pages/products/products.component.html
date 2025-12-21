@@ -2,9 +2,6 @@
   <!-- Page Header -->
   <section class="page-header">
     <h1>Our Complete Tea Sanctuary</h1>
-    <div class="page-intro">
-      <p>Welcome to our curated collection of premium teas sourced directly from the legendary estates of Tamil Nadu. Each tea represents generations of expertise, sustainability, and a deep reverence for the tea-making tradition. Explore the diversity of flavors, aromas, and stories waiting to become your new favorite ritual.</p>
-    </div>
   </section>
 
   <!-- Filter Section -->
@@ -12,11 +9,8 @@
     <div class="filter-container">
       <h3>Filter by Category</h3>
       <div class="filter-buttons">
-        <button 
-          *ngFor="let category of categories"
-          [class.active]="selectedCategory === category"
-          (click)="filterByCategory(category)"
-          class="filter-btn">
+        <button *ngFor="let category of categories" [class.active]="selectedCategory === category"
+          (click)="filterByCategory(category)" class="filter-btn">
           {{ category | titlecase }}
         </button>
       </div>
@@ -30,6 +24,7 @@
     </div>
 
     <div *ngIf="filteredTeas.length === 0" class="no-products">
+      <img src="images/empty-state.png" alt="No teas found" class="empty-state-img">
       <p>No teas found in this category. Please try another filter.</p>
     </div>
   </section>

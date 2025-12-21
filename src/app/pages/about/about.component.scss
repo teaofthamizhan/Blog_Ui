@@ -4,7 +4,7 @@
 }
 
 .page-header {
-  background: linear-gradient(135deg, #2d5016 0%, #3d6b1f 100%);
+  background: linear-gradient(135deg, #1b3022 0%, #2d5c3f 100%);
   color: white;
   padding: 3rem 1.5rem;
   text-align: center;
@@ -13,6 +13,7 @@
     font-size: 2.5rem;
     margin-bottom: 1rem;
     font-weight: 700;
+    color: white;
   }
 
   p {
@@ -40,7 +41,7 @@
     .content-text {
       h2 {
         font-size: 2rem;
-        color: #2d5016;
+        color: #1b3022;
         margin-bottom: 1.5rem;
         font-weight: 700;
       }
@@ -66,13 +67,13 @@
 
 .mission-section {
   padding: 4rem 1.5rem;
-  background: linear-gradient(135deg, #f5f9f2 0%, #eef5e8 100%);
+  background: linear-gradient(135deg, #fdfbf7 0%, #f5f2e8 100%);
   max-width: 1200px;
   margin: 0 auto;
 
   h2 {
     font-size: 2rem;
-    color: #2d5016;
+    color: #1b3022;
     text-align: center;
     margin-bottom: 3rem;
     font-weight: 700;
@@ -91,13 +92,13 @@
       transition: all 0.3s ease;
 
       &:hover {
-        box-shadow: 0 8px 24px rgba(45, 80, 22, 0.1);
+        box-shadow: 0 8px 24px rgba(27, 48, 34, 0.1);
         transform: translateY(-4px);
       }
 
       h3 {
         font-size: 1.3rem;
-        color: #2d5016;
+        color: #1b3022;
         margin-bottom: 1rem;
       }
 
@@ -118,7 +119,7 @@
   color: #888;
 
   h3 {
-    color: #2d5016;
+    color: #1b3022;
     margin-bottom: 0.5rem;
   }
 }

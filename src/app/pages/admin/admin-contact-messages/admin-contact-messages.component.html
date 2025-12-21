@@ -1,0 +1,97 @@
+<div class="admin-contact-messages">
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Contact Messages</h1>
+    <div class="page-intro">
+      <!-- <p>View and manage all contact form submissions from your visitors.</p> -->
+    </div>
+    <div class="header-actions">
+      <a routerLink="/admin" class="btn btn-secondary">← Back to Dashboard</a>
+    </div>
+  </section>
+
+  <!-- Search Bar -->
+  <section class="search-filter-section" *ngIf="!isLoading">
+    <div class="search-filter-bar">
+      <div class="search-box">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search messages by name, email, or content...">
+        <span class="search-icon">🔍</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Messages Table -->
+  <section class="messages-section" *ngIf="!isLoading">
+    <div class="table-wrapper">
+      <table class="messages-table" *ngIf="contactMessages.length > 0">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message Preview</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let message of filteredMessages">
+            <td class="name">{{ message.name }}</td>
+            <td class="email">{{ message.email }}</td>
+            <td class="message-preview">{{ message.message | slice:0:50 }}...</td>
+            <td class="date">{{ formatDate(message.createdAt) }}</td>
+            <td class="actions">
+              <button class="btn-view" (click)="viewMessage(message)">View</button>
+              <button class="btn-delete" (click)="deleteContactMessage(message.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="contactMessages.length === 0" class="no-messages">
+        <p>No contact messages yet.</p>
+      </div>
+
+      <div class="pagination" *ngIf="totalPages > 1">
+        <button [disabled]="currentPage === 0" (click)="previousPage()" class="btn-pagination">← Previous</button>
+        <span class="page-info">Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+        <button [disabled]="currentPage >= totalPages - 1" (click)="nextPage()" class="btn-pagination">Next →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Message Modal -->
+  <div class="modal-overlay" *ngIf="showModal && selectedMessage">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Contact Message</h2>
+        <button class="close-btn" (click)="closeModal()">&times;</button>
+      </div>
+
+      <div class="message-details-content">
+        <div class="detail-group">
+          <label>From:</label>
+          <div class="detail-value">{{ selectedMessage.name }} (&lt;{{ selectedMessage.email }}&gt;)</div>
+        </div>
+        <div class="detail-group">
+          <label>Date:</label>
+          <div class="detail-value">{{ formatDate(selectedMessage.createdAt) }}</div>
+        </div>
+        <div class="detail-group">
+          <label>Subject:</label>
+          <div class="detail-value">{{ selectedMessage.subject }}</div>
+        </div>
+        <div class="message-body-container">
+          <label>Message Content:</label>
+          <div class="message-text">
+            {{ selectedMessage.message }}
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-secondary-action" (click)="closeModal()">Close</button>
+        <button class="btn-delete-action" (click)="deleteContactMessage(selectedMessage.id)">Delete Message</button>
+      </div>
+    </div>
+  </div>
+</div>

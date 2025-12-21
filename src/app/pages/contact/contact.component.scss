@@ -4,20 +4,48 @@
 }
 
 .page-header {
-  background: linear-gradient(135deg, #2d5016 0%, #3d6b1f 100%);
+  background: linear-gradient(135deg, #1b3022 0%, #2d5c3f 100%);
   color: white;
   padding: 3rem 1.5rem;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
 
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
   }
 
-  p {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.9);
+  .header-content {
+    flex: 1;
+    text-align: center;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .page-intro p {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      padding-left: 500px;
+    }
+  }
+
+  .header-image {
+    flex-shrink: 0;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
   }
 }
 
@@ -38,7 +66,7 @@
 
     h2 {
       font-size: 1.5rem;
-      color: #2d5016;
+      color: #1b3022;
       margin-bottom: 1.5rem;
       font-weight: 600;
     }
@@ -48,6 +76,15 @@
         background: #e8f5e9;
         border: 1px solid #4caf50;
         color: #2e7d32;
+        padding: 1rem;
+        border-radius: 6px;
+        margin-bottom: 1.5rem;
+      }
+
+      .error-message {
+        background: #ffebee;
+        border: 1px solid #ef5350;
+        color: #c62828;
         padding: 1rem;
         border-radius: 6px;
         margin-bottom: 1.5rem;
@@ -65,7 +102,7 @@
 
           label {
             font-weight: 600;
-            color: #2d5016;
+            color: #1b3022;
             font-size: 0.95rem;
           }
 
@@ -79,20 +116,41 @@
 
             &:focus {
               outline: none;
-              border-color: #a8e63d;
-              box-shadow: 0 0 0 3px rgba(168, 230, 61, 0.1);
+              border-color: #c5a059;
+              box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1);
+            }
+
+            &.input-error {
+              border-color: #ef5350;
+              background-color: #ffebee;
+
+              &:focus {
+                box-shadow: 0 0 0 3px rgba(239, 83, 80, 0.1);
+              }
             }
           }
 
           textarea {
             resize: vertical;
           }
+
+          .error-text {
+            color: #c62828;
+            font-size: 0.85rem;
+            font-weight: 500;
+          }
+
+          .char-count {
+            font-size: 0.8rem;
+            color: #888;
+            text-align: right;
+          }
         }
 
         .submit-btn {
           padding: 0.85rem 2rem;
-          background: #a8e63d;
-          color: #2d5016;
+          background: #c5a059;
+          color: #1b3022;
           border: none;
           border-radius: 6px;
           font-weight: 600;
@@ -101,7 +159,7 @@
           font-size: 1rem;
 
           &:hover:not(:disabled) {
-            background: #c8ff5a;
+            background: #dfc58d;
             transform: translateY(-2px);
           }
 
@@ -117,11 +175,11 @@
       .info-item {
         margin-bottom: 2rem;
         padding: 1.5rem;
-        background: linear-gradient(135deg, #f5f9f2 0%, #eef5e8 100%);
+        background: linear-gradient(135deg, #fdfbf7 0%, #f5f2e8 100%);
         border-radius: 8px;
 
         h3 {
-          color: #2d5016;
+          color: #1b3022;
           font-size: 1.1rem;
           margin-bottom: 0.75rem;
           font-weight: 600;
@@ -139,17 +197,17 @@
           flex-wrap: wrap;
 
           .social-link {
-            color: #2d5016;
+            color: #1b3022;
             text-decoration: none;
             font-weight: 600;
             padding: 0.5rem 1rem;
-            border: 2px solid #a8e63d;
+            border: 2px solid #c5a059;
             border-radius: 4px;
             transition: all 0.3s ease;
 
             &:hover {
-              background: #a8e63d;
-              color: #2d5016;
+              background: #c5a059;
+              color: #1b3022;
             }
           }
         }

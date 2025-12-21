@@ -1,33 +1,45 @@
-<div class="blog-detail-page" *ngIf="!isLoading">
-  <div *ngIf="blog" class="blog-container">
-    <div class="page-intro-section">
-      <p>Dive deep into stories and insights that celebrate tea culture, wellness, and Tamil heritage. Each article is carefully crafted to inspire, educate, and connect you to the rich traditions behind every cup.</p>
-    </div>
+<div class="blog-detail-page">
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-container">
+    <p>Loading blog post...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="!isLoading && errorMessage" class="error-container">
+    <h2>Error Loading Blog</h2>
+    <p>{{ errorMessage }}</p>
+    <a routerLink="/blog" class="btn btn-primary">Back to Blog</a>
+  </div>
+
+  <!-- Blog Content -->
+  <div *ngIf="!isLoading && blog" class="blog-container">
+    <!-- <div class="page-intro-section">
+      <p>Dive deep into stories and insights that celebrate tea culture, wellness, and Tamil heritage. Each article is
+        carefully crafted to inspire, educate, and connect you to the rich traditions behind every cup.</p>
+    </div> -->
+
     <!-- Article Header -->
     <article class="blog-article">
       <header class="article-header">
         <h1>{{ blog.title }}</h1>
         <div class="article-meta">
-          <span class="category">{{ blog.category }}</span>
-          <span class="date">{{ blog.date | date: 'MMMM d, yyyy' }}</span>
-          <span class="read-time">{{ blog.readTime }} min read</span>
-        </div>
-        <div class="article-author">
-          <span class="author-name">By {{ blog.author }}</span>
+          <span *ngIf="blog.category" class="category">{{ blog.category }}</span>
+          <span class="date">{{ blog.createdAt | date: 'MMMM d, yyyy' }}</span>
+          <span class="read-time">{{ estimatedReadTime }} min read</span>
         </div>
       </header>
 
-      <figure class="article-image">
-        <img [src]="blog.image" [alt]="blog.title">
+      <figure class="article-image" *ngIf="blog.featuredImage">
+        <img [src]="blog.featuredImage" [alt]="blog.title" (error)="onImageError($event)">
       </figure>
 
       <div class="article-content">
-        <p>{{ blog.content }}</p>
+        {{ blog.content }}
       </div>
 
       <footer class="article-footer">
-        <div class="tags">
-          <span *ngFor="let tag of blog.tags" class="tag">#{{ tag }}</span>
+        <div class="tags" *ngIf="tags.length > 0">
+          <span *ngFor="let tag of tags" class="tag">#{{ tag }}</span>
         </div>
       </footer>
     </article>
@@ -38,9 +50,10 @@
     </div>
   </div>
 
-  <div *ngIf="!blog" class="not-found">
+  <!-- Not Found State -->
+  <div *ngIf="!isLoading && !blog && !errorMessage" class="not-found">
     <h2>Blog post not found</h2>
-    <p>The article you're looking for doesn't exist.</p>
+    <p>The article you're looking for doesn't exist or has been removed.</p>
     <a routerLink="/blog" class="btn btn-primary">Back to Blog</a>
   </div>
 </div>

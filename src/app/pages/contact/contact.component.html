@@ -1,9 +1,8 @@
 <div class="contact-page">
   <!-- Page Header -->
   <section class="page-header">
-    <h1>Let's Connect Over Tea</h1>
-    <div class="page-intro">
-      <p>Have questions about our teas? Want to share your tea stories? Or perhaps you'd like to explore partnership opportunities? We're here to listen and connect. Reach out to us—we'd love to hear from you.</p>
+    <div class="header-content">
+      <h1>Let's Connect Over Tea</h1>
     </div>
   </section>
 
@@ -13,64 +12,47 @@
       <!-- Contact Form -->
       <div class="contact-form-wrapper">
         <h2>Share Your Thoughts</h2>
-        
+
         <div *ngIf="submitted" class="success-message">
           {{ submitMessage }}
         </div>
 
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+
         <form (ngSubmit)="onSubmit()" #form="ngForm" class="contact-form">
           <div class="form-group">
-            <label for="name">Name</label>
-            <input 
-              type="text" 
-              id="name" 
-              name="name"
-              [(ngModel)]="contactForm.name"
-              placeholder="Your name"
-              required>
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" [(ngModel)]="contactForm.name" placeholder="Your name"
+              [class.input-error]="errors['name']" required>
+            <span *ngIf="errors['name']" class="error-text">{{ errors['name'] }}</span>
           </div>
 
           <div class="form-group">
-            <label for="email">Email</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email"
-              [(ngModel)]="contactForm.email"
-              placeholder="your.email@example.com"
-              required>
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" [(ngModel)]="contactForm.email"
+              placeholder="your.email@example.com" [class.input-error]="errors['email']" required>
+            <span *ngIf="errors['email']" class="error-text">{{ errors['email'] }}</span>
           </div>
 
           <div class="form-group">
             <label for="phone">Phone (Optional)</label>
-            <input 
-              type="tel" 
-              id="phone" 
-              name="phone"
-              [(ngModel)]="contactForm.phone"
-              placeholder="+91-XXX-XXXX-XXXX">
+            <input type="tel" id="phone" name="phone" [(ngModel)]="contactForm.phone" placeholder="+91-XXX-XXXX-XXXX">
           </div>
 
           <div class="form-group">
-            <label for="subject">Subject</label>
-            <input 
-              type="text" 
-              id="subject" 
-              name="subject"
-              [(ngModel)]="contactForm.subject"
-              placeholder="How can we help?"
-              required>
+            <label for="subject">Subject (Optional)</label>
+            <input type="text" id="subject" name="subject" [(ngModel)]="contactForm.subject"
+              placeholder="How can we help?">
           </div>
 
           <div class="form-group">
-            <label for="message">Message</label>
-            <textarea 
-              id="message" 
-              name="message"
-              [(ngModel)]="contactForm.message"
-              placeholder="Your message here..."
-              rows="6"
-              required></textarea>
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" [(ngModel)]="contactForm.message" placeholder="Your message here..."
+              rows="6" [class.input-error]="errors['message']" required></textarea>
+            <span *ngIf="errors['message']" class="error-text">{{ errors['message'] }}</span>
+            <span class="char-count">{{ contactForm.message.length || 0 }}/5000 characters</span>
           </div>
 
           <button type="submit" class="submit-btn" [disabled]="isSubmitting">
@@ -82,7 +64,7 @@
       <!-- Contact Info -->
       <div class="contact-info-wrapper">
         <h2>Find Us Here</h2>
-        
+
         <div class="info-item">
           <h3>📍 Address</h3>
           <p>Tamil Nadu, India</p>
@@ -90,19 +72,19 @@
 
         <div class="info-item">
           <h3>📧 Email</h3>
-          <p>hello&#64;myteaofthamizhan.com</p>
+          <p>teaofthamizhan.2025&#64;gmail.com</p>
         </div>
 
         <div class="info-item">
           <h3>📞 Phone</h3>
-          <p>+91-000-0000-0000</p>
+          <p>+91-9698035438</p>
         </div>
 
-        <div class="info-item">
+        <!-- <div class="info-item">
           <h3>⏰ Business Hours</h3>
           <p>Monday - Friday: 9 AM - 6 PM</p>
           <p>Saturday - Sunday: 10 AM - 4 PM</p>
-        </div>
+        </div> -->
 
         <div class="info-item">
           <h3>🌐 Follow Us</h3>

@@ -1,144 +1,81 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { BlogPost } from '../models/blog.model';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { BlogRequestDTO, BlogResponseDTO, ApiResponse, PagedResponse, BlogPost } from '../models';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogService {
-  private mockBlogs: BlogPost[] = [
-    {
-      id: '1',
-      title: 'The Ancient Art of Tamil Tea Tradition',
-      excerpt: 'Journey through millennia as we reveal how tea culture has been woven into the very fabric of Tamil identity, from ancient kingdoms to your morning cup.',
-      content: `Tea has been an integral part of Tamil culture for over two millennia. From the
-        ancient Sangam period to modern times, tea (or "chai" as it's lovingly called) represents
-        more than just a beverage—it's a cultural symbol of hospitality, togetherness, and tradition.
+  private apiUrl = `${environment.apiUrl}/api`;
 
-        In Tamil Nadu, tea plantations cover the misty hills of the Nilgiris,
-        where our finest teas are cultivated with care and respect for nature. Each cup tells
-        a story of heritage, passion, and the land's rich biodiversity.`,
-      author: 'Aarjun Desikan',
-      date: new Date('2024-01-15'),
-      image: 'https://images.unsplash.com/photo-1597318972157-3b911f4af589?w=600&h=400&fit=crop',
-      tags: ['tradition', 'culture', 'heritage'],
-      category: 'Culture',
-      readTime: 5
-    },
-    {
-      id: '2',
-      title: 'Health Benefits of Green Tea: Science Meets Tradition',
-      excerpt: 'Discover the remarkable power hidden in every leaf—where ancient wisdom and modern science converge to reveal tea\'s transformative gifts for body and mind.',
-      content: `Green tea is not just a beverage; it's a wellness elixir backed by modern science.
-        Rich in antioxidants called catechins, green tea has been shown to support metabolism,
-        improve focus, and promote heart health.
+  constructor(private http: HttpClient) {}
 
-        Our Jasmine Green Tea combines the delicate flavors of green tea with aromatic jasmine flowers,
-        creating a drink that pleases both the palate and the body. Whether enjoyed in the morning
-        for a gentle energy boost or in the afternoon for relaxation, green tea adapts to your needs.`,
-      author: 'Priya Shankar',
-      date: new Date('2024-01-10'),
-      image: 'https://images.unsplash.com/photo-1597318972157-3b911f4af589?w=600&h=400&fit=crop',
-      tags: ['health', 'wellness', 'science'],
-      category: 'Wellness',
-      readTime: 6
-    },
-    {
-      id: '3',
-      title: 'Brewing the Perfect Cup: A Beginner\'s Guide',
-      excerpt: 'Unlock the secrets of tea mastery with our step-by-step guide—because the perfect cup isn\'t luck, it\'s an art that anyone can learn.',
-      content: `The art of brewing tea is simple yet nuanced. Temperature, steeping time, and water quality
-        all play crucial roles in extracting the perfect flavor from your tea leaves.
-
-        Different teas require different approaches: delicate white teas prefer cooler water and shorter
-        steep times, while robust black teas thrive in hotter water. Our guide provides specific recommendations
-        for each tea variety, ensuring you get the most from your cup.`,
-      author: 'Rajesh Kumar',
-      date: new Date('2024-01-05'),
-      image: 'https://images.unsplash.com/photo-1597318972157-3b911f4af589?w=600&h=400&fit=crop',
-      tags: ['brewing', 'guide', 'tips'],
-      category: 'How-To',
-      readTime: 4
-    },
-    {
-      id: '4',
-      title: 'Sustainable Tea Sourcing: Our Commitment',
-      excerpt: 'Learn how every cup you drink contributes to a greater purpose—supporting Tamil farmers, protecting ecosystems, and building a legacy of sustainability.',
-      content: `At My Tea of Thamizhan, sustainability isn't just a buzzword—it's our commitment
-        to future generations. We work directly with tea farmers in Tamil Nadu to ensure fair wages,
-        proper working conditions, and environmentally conscious practices.
-
-        By choosing our teas, you're supporting local communities and preserving the natural ecosystems
-        that make Tamil Nadu's tea regions so special.`,
-      author: 'Ananya Iyer',
-      date: new Date('2023-12-28'),
-      image: 'https://images.unsplash.com/photo-1597318972157-3b911f4af589?w=600&h=400&fit=crop',
-      tags: ['sustainability', 'environment', 'community'],
-      category: 'Impact',
-      readTime: 7
-    }
-  ];
-
-  private blogsSubject = new BehaviorSubject<BlogPost[]>(this.mockBlogs);
-
-  constructor() {}
-
-  getBlogs(): Observable<BlogPost[]> {
-    return this.blogsSubject.asObservable();
-  }
-
-  getBlogById(id: string): Observable<BlogPost | undefined> {
+  // Legacy method for dashboard compatibility
+  getBlogs(): Observable<BlogResponseDTO[]> {
     return new Observable(observer => {
-      const blog = this.mockBlogs.find(b => b.id === id);
-      observer.next(blog);
-      observer.complete();
-    });
-  }
-
-  getLatestBlogs(limit: number = 3): Observable<BlogPost[]> {
-    const latest = this.mockBlogs
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-      .slice(0, limit);
-    return new Observable(observer => {
-      observer.next(latest);
-      observer.complete();
-    });
-  }
-
-  addBlog(blog: BlogPost): Observable<BlogPost> {
-    this.mockBlogs.push(blog);
-    this.blogsSubject.next([...this.mockBlogs]);
-    return new Observable(observer => {
-      observer.next(blog);
-      observer.complete();
-    });
-  }
-
-  updateBlog(id: string, blog: Partial<BlogPost>): Observable<BlogPost | undefined> {
-    const index = this.mockBlogs.findIndex(b => b.id === id);
-    if (index !== -1) {
-      this.mockBlogs[index] = { ...this.mockBlogs[index], ...blog };
-      this.blogsSubject.next([...this.mockBlogs]);
-    }
-    return new Observable(observer => {
-      observer.next(this.mockBlogs[index]);
-      observer.complete();
-    });
-  }
-
-  deleteBlog(id: string): Observable<boolean> {
-    const index = this.mockBlogs.findIndex(b => b.id === id);
-    if (index !== -1) {
-      this.mockBlogs.splice(index, 1);
-      this.blogsSubject.next([...this.mockBlogs]);
-      return new Observable(observer => {
-        observer.next(true);
-        observer.complete();
+      this.getAllBlogs(0, 1000).subscribe({
+        next: (response) => {
+          if (response.data && response.data.content) {
+            observer.next(response.data.content);
+          } else {
+            observer.next([]);
+          }
+          observer.complete();
+        },
+        error: (error) => {
+          observer.error(error);
+        }
       });
-    }
-    return new Observable(observer => {
-      observer.next(false);
-      observer.complete();
     });
+  }
+
+  // Public endpoints
+  getPublishedBlogs(page: number = 0, size: number = 10, sort: string = 'createdAt,desc'): Observable<ApiResponse<any>> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+      .set('sort', sort);
+
+    return this.http.get<ApiResponse<any>>(`${this.apiUrl}/blogs`, { params });
+  }
+
+  getLatestBlogs(limit: number = 3): Observable<ApiResponse<any>> {
+    return this.getPublishedBlogs(0, limit, 'createdAt,desc');
+  }
+
+  getBlogBySlug(slug: string): Observable<ApiResponse<BlogResponseDTO>> {
+    return this.http.get<ApiResponse<BlogResponseDTO>>(`${this.apiUrl}/blogs/${slug}`);
+  }
+
+  getBlogsByCategory(category: string, page: number = 0, size: number = 10): Observable<ApiResponse<any>> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+
+    return this.http.get<ApiResponse<any>>(`${this.apiUrl}/blogs/category/${category}`, { params });
+  }
+
+  // Admin endpoints
+  getAllBlogs(page: number = 0, size: number = 10, sort: string = 'createdAt,desc'): Observable<ApiResponse<any>> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+      .set('sort', sort);
+
+    return this.http.get<ApiResponse<any>>(`${this.apiUrl}/admin/blogs`, { params });
+  }
+
+  createBlog(blog: BlogRequestDTO): Observable<ApiResponse<BlogResponseDTO>> {
+    return this.http.post<ApiResponse<BlogResponseDTO>>(`${this.apiUrl}/admin/blogs`, blog);
+  }
+
+  updateBlog(id: number, blog: BlogRequestDTO): Observable<ApiResponse<BlogResponseDTO>> {
+    return this.http.put<ApiResponse<BlogResponseDTO>>(`${this.apiUrl}/admin/blogs/${id}`, blog);
+  }
+
+  deleteBlog(id: number): Observable<ApiResponse<void>> {
+    return this.http.delete<ApiResponse<void>>(`${this.apiUrl}/admin/blogs/${id}`);
   }
 }

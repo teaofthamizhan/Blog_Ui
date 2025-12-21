@@ -2,8 +2,8 @@
   <div class="navbar-container">
     <div class="navbar-brand">
       <a routerLink="/" class="brand-link">
-        <span class="brand-icon">🍵</span>
-        <span class="brand-name">My Tea of Thamizhan</span>
+        <img src="images/logo.png" alt="Tea of Thamizhan" class="brand-logo">
+        <span class="brand-name">Tea of Thamizhan</span>
       </a>
     </div>
 
@@ -14,7 +14,8 @@
     </button>
 
     <ul class="navbar-menu" [class.active]="isMenuOpen()">
-      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Home</a></li>
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeMenu()">Home</a></li>
       <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About</a></li>
       <li><a routerLink="/products" routerLinkActive="active" (click)="closeMenu()">Products</a></li>
       <li><a routerLink="/blog" routerLinkActive="active" (click)="closeMenu()">Blog</a></li>

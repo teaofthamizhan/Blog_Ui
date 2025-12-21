@@ -1,23 +1,23 @@
 <article class="blog-card">
   <div class="card-image">
-    <img [src]="blog.image" [alt]="blog.title" loading="lazy">
-    <span class="date-badge">{{ blog.date | date: 'MMM d' }}</span>
+    <img [src]="blog.featuredImage || 'images/default-tea.png'" [alt]="blog.title" loading="lazy"
+      (error)="onImageError($event)">
+    <span class="date-badge">{{ blog.createdAt | date: 'MMM d' }}</span>
   </div>
   <div class="card-content">
     <div class="meta">
-      <span class="category">{{ blog.category }}</span>
-      <span class="read-time">{{ blog.readTime }} min read</span>
+      <span *ngIf="blog.category" class="category">{{ blog.category }}</span>
+      <span class="read-time">{{ estimatedReadTime }} min read</span>
     </div>
     <h2>{{ blog.title }}</h2>
-    <p class="excerpt">{{ blog.excerpt }}</p>
-    
+    <p class="excerpt">{{ blog.summary || blog.content.substring(0, 150) + '...' }}</p>
+
     <div class="tags">
-      <span *ngFor="let tag of blog.tags" class="tag">#{{ tag }}</span>
+      <span *ngFor="let tag of tags" class="tag">#{{ tag }}</span>
     </div>
 
     <div class="footer">
-      <span class="author">By {{ blog.author }}</span>
-      <a [routerLink]="['/blog', blog.id]" class="read-more">Read More →</a>
+      <a [routerLink]="['/blog', blog.slug]" class="read-more">Read More →</a>
     </div>
   </div>
 </article>

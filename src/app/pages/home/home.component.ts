@@ -6,31 +6,39 @@ import { BlogCardComponent } from '../../shared/components/blog-card/blog-card.c
 import { TeaService } from '../../core/services/tea.service';
 import { BlogService } from '../../core/services/blog.service';
 import { Tea } from '../../core/models/tea.model';
-import { BlogPost } from '../../core/models/blog.model';
+import { BlogResponseDTO } from '../../core/models/blog.model';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, BlogCardComponent],
+  imports: [CommonModule, RouterLink, ProductCardComponent, BlogCardComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
   featuredTeas: Tea[] = [];
-  latestBlogs: BlogPost[] = [];
+  latestBlogs: BlogResponseDTO[] = [];
 
   constructor(
     private teaService: TeaService,
-    private blogService: BlogService
-  ) {}
+    private blogService: BlogService,
+    private titleService: Title,
+    private metaService: Meta
+  ) { }
 
   ngOnInit() {
+    this.titleService.setTitle('Tea of Thamizhan - Premium Artisan Teas & Stories');
+    this.metaService.updateTag({ name: 'description', content: 'Discover the finest collection of premium Indian teas. From Darjeeling to Assam, explore our curated selection and deep-dive into the world of tea culture.' });
+
     this.teaService.getFeaturedTeas().subscribe(teas => {
       this.featuredTeas = teas;
     });
 
-    this.blogService.getLatestBlogs(3).subscribe(blogs => {
-      this.latestBlogs = blogs;
+    this.blogService.getLatestBlogs(3).subscribe(response => {
+      if (response.data && response.data.content) {
+        this.latestBlogs = response.data.content;
+      }
     });
   }
 

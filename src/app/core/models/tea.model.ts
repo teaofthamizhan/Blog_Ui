@@ -1,5 +1,5 @@
 export interface Tea {
-  id: string;
+  id: number;
   name: string;
   description: string;
   aromaProfile?: string;
@@ -13,5 +13,5 @@ export interface Tea {
   culturalReference?: string;
   steep_time: string;
   temperature: string;
-  featured: boolean;
+  active: boolean;
 }

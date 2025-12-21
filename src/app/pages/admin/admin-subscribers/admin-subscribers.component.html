@@ -1,0 +1,113 @@
+<div class="admin-subscribers">
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Newsletter Subscribers</h1>
+    <div class="page-intro">
+      <p>Manage your newsletter subscriber list. View all subscribers, remove unengaged subscribers, and monitor your
+        email list growth.</p>
+    </div>
+    <div class="header-actions">
+      <a routerLink="/admin" class="btn btn-secondary">← Back to Dashboard</a>
+      <button class="btn btn-primary" (click)="openAddModal()">+ Add Subscriber</button>
+    </div>
+  </section>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-error">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-container">
+    <p>Loading subscribers...</p>
+  </div>
+
+  <!-- Search Bar -->
+  <section class="search-filter-section" *ngIf="!isLoading">
+    <div class="search-filter-bar">
+      <div class="search-box">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search subscribers by email...">
+        <span class="search-icon">🔍</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribers Table -->
+  <section *ngIf="!isLoading" class="subscribers-section">
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-label">Total Subscribers</span>
+        <span class="stat-value">{{ totalElements }}</span>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="subscribers-table">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Subscribed On</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let subscriber of filteredSubscribers">
+            <td class="email">{{ subscriber.email }}</td>
+            <td class="date">{{ subscriber.subscribedAt | date: 'MMM d, yyyy' }}</td>
+            <td class="actions">
+              <button class="btn-delete" (click)="deleteSubscriber(subscriber.id, subscriber.email)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="subscribers.length === 0" class="no-subscribers">
+        <p>No subscribers yet. Share your newsletter signup form to get started!</p>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div *ngIf="totalPages > 1" class="pagination">
+      <button class="pagination-btn" (click)="goToPage(currentPage - 1)" [disabled]="!hasPreviousPage">
+        ← Previous
+      </button>
+
+      <div class="pagination-info">
+        Page {{ currentPage + 1 }} of {{ totalPages }} ({{ totalElements }} total)
+      </div>
+
+      <button class="pagination-btn" (click)="goToPage(currentPage + 1)" [disabled]="!hasNextPage">
+        Next →
+      </button>
+    </div>
+  </section>
+
+  <!-- Add Subscriber Modal -->
+  <div class="modal-overlay" *ngIf="showAddModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Add New Subscriber</h2>
+        <button class="close-btn" (click)="closeAddModal()">&times;</button>
+      </div>
+
+      <div class="modal-body" style="padding: 2rem;">
+        <div class="form-group">
+          <label style="display: block; font-weight: 600; color: #2d5016; margin-bottom: 0.5rem;">Email Address*</label>
+          <input type="email" [(ngModel)]="subscriberEmail" placeholder="Enter subscriber's email"
+            style="width: 100%; padding: 0.75rem 1rem; border: 2px solid #e8f0e8; border-radius: 8px; font-size: 1rem;"
+            (keyup.enter)="addSubscriber()">
+          <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Add a new email address to your newsletter
+            distribution list.</p>
+        </div>
+      </div>
+
+      <div class="modal-footer"
+        style="padding: 1.5rem 2rem; border-top: 1px solid #e8f0e8; display: flex; justify-content: flex-end; gap: 1rem;">
+        <button class="btn btn-secondary" (click)="closeAddModal()">Cancel</button>
+        <button class="btn btn-primary" (click)="addSubscriber()" [disabled]="!subscriberEmail || isSubmitting">
+          {{ isSubmitting ? 'Adding...' : 'Add Subscriber' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

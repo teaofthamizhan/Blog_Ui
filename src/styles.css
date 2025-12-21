@@ -4,14 +4,21 @@
 
 /* Global Styles */
 :root {
-  --primary-dark: #2d5016;
-  --primary-light: #3d6b1f;
-  --accent: #a8e63d;
-  --accent-light: #c8ff5a;
-  --text-dark: #2d5016;
-  --text-muted: #888;
-  --border-light: #e8f0e8;
-  --bg-light: #f5f9f2;
+  --primary-dark: #1b3022;
+  /* Deep Forest */
+  --primary-light: #2d5c3f;
+  /* Rich Matcha */
+  --accent: #c5a059;
+  /* Brewed Gold */
+  --accent-light: #dfc58d;
+  /* Soft Gold */
+  --text-dark: #1b3022;
+  --text-muted: #7c7769;
+  /* Warm Muted */
+  --border-light: #e8e4db;
+  /* Warm Gray */
+  --bg-light: #fdfbf7;
+  /* Parchment */
 }
 
 * {
@@ -35,7 +42,12 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.2;
   font-weight: 600;
 }
@@ -71,7 +83,9 @@ a {
 }
 
 /* Forms */
-input, textarea, select {
+input,
+textarea,
+select {
   font-family: inherit;
 }
 
@@ -92,6 +106,7 @@ button {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -103,6 +118,7 @@ button {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

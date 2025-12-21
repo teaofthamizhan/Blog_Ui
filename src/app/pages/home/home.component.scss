@@ -7,7 +7,7 @@
   padding: 4rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
-  background: linear-gradient(135deg, #f5f9f2 0%, #eef5e8 100%);
+  background: linear-gradient(135deg, #fdfbf7 0%, #f5f2e8 100%);
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -19,7 +19,7 @@
     h1 {
       font-size: 3rem;
       font-weight: 700;
-      color: #2d5016;
+      color: #1b3022;
       margin-bottom: 1rem;
       line-height: 1.2;
 
@@ -70,35 +70,35 @@
   font-size: 1rem;
 
   &.btn-primary {
-    background: #a8e63d;
-    color: #2d5016;
+    background: #c5a059;
+    color: #1b3022;
 
     &:hover {
-      background: #c8ff5a;
+      background: #dfc58d;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(168, 230, 61, 0.4);
+      box-shadow: 0 4px 12px rgba(197, 160, 89, 0.4);
     }
   }
 
   &.btn-secondary {
     background: transparent;
-    color: #2d5016;
-    border: 2px solid #2d5016;
+    color: #1b3022;
+    border: 2px solid #1b3022;
 
     &:hover {
-      background: #2d5016;
+      background: #1b3022;
       color: white;
     }
   }
 
   &.btn-outline {
     background: transparent;
-    color: #2d5016;
-    border: 2px solid #a8e63d;
+    color: #1b3022;
+    border: 2px solid #c5a059;
 
     &:hover {
-      background: #a8e63d;
-      color: #2d5016;
+      background: #c5a059;
+      color: #1b3022;
     }
   }
 }
@@ -116,7 +116,7 @@
 
     h2 {
       font-size: 2.5rem;
-      color: #2d5016;
+      color: #1b3022;
       margin-bottom: 2rem;
       font-weight: 700;
       text-align: center;
@@ -136,7 +136,7 @@
 
       .emphasis {
         font-size: 1.1rem;
-        color: #2d5016;
+        color: #1b3022;
         font-weight: 600;
         margin-top: 2rem;
       }
@@ -151,7 +151,7 @@
 
   h2 {
     font-size: 2.5rem;
-    color: #2d5016;
+    color: #1b3022;
     margin-bottom: 1.5rem;
     font-weight: 700;
 
@@ -173,10 +173,10 @@
 
     .blog-intro-highlight {
       font-weight: 600;
-      color: #2d5016;
-      background: rgba(168, 230, 61, 0.1);
+      color: #1b3022;
+      background: rgba(197, 160, 89, 0.1);
       padding: 1rem;
-      border-left: 3px solid #a8e63d;
+      border-left: 3px solid #c5a059;
       border-radius: 4px;
     }
   }
@@ -221,7 +221,7 @@
     .snippet-text {
       h2 {
         font-size: 2.2rem;
-        color: #2d5016;
+        color: #1b3022;
         margin-bottom: 1.5rem;
         font-weight: 700;
       }
@@ -250,7 +250,7 @@
   padding: 4rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
-  background: linear-gradient(135deg, #f5f9f2 0%, #eef5e8 100%);
+  background: linear-gradient(135deg, #fdfbf7 0%, #f5f2e8 100%);
 
   .blogs-grid {
     display: grid;
@@ -268,7 +268,7 @@
 /* CTA Section */
 .cta-section {
   padding: 4rem 1.5rem;
-  background: linear-gradient(135deg, #2d5016 0%, #3d6b1f 100%);
+  background: linear-gradient(135deg, #1b3022 0%, #2d5c3f 100%);
   color: white;
   text-align: center;
   max-width: 1200px;
@@ -278,6 +278,7 @@
     font-size: 2.2rem;
     margin-bottom: 1rem;
     font-weight: 700;
+    color: white;
   }
 
   p {
@@ -313,8 +314,8 @@
 
     button {
       padding: 0.85rem 2rem;
-      background: #a8e63d;
-      color: #2d5016;
+      background: #c5a059;
+      color: #1b3022;
       border: none;
       border-radius: 6px;
       font-weight: 600;
@@ -322,7 +323,7 @@
       transition: all 0.3s ease;
 
       &:hover {
-        background: #c8ff5a;
+        background: #dfc58d;
         transform: translateY(-2px);
       }
     }

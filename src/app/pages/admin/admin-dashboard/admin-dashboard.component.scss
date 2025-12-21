@@ -1,10 +1,10 @@
 .admin-dashboard {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f9f2 0%, #eef5e8 100%);
+  background: linear-gradient(135deg, #fdfbf7 0%, #f5f2e8 100%);
 }
 
 .page-header {
-  background: linear-gradient(135deg, #2d5016 0%, #3d6b1f 100%);
+  background: linear-gradient(135deg, #1b3022 0%, #2d5c3f 100%);
   color: white;
   padding: 3rem 1.5rem;
   text-align: center;
@@ -13,11 +13,19 @@
     font-size: 2.5rem;
     margin-bottom: 1rem;
     font-weight: 700;
+    color: white;
   }
 
-  p {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.9);
+  .page-intro {
+    margin-bottom: 2rem;
+
+    p {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0;
+      line-height: 1.6;
+      text-align: center;
+    }
   }
 }
 
@@ -50,19 +58,19 @@
 
       .stat-number {
         font-size: 3rem;
-        color: #a8e63d;
+        color: #c5a059;
         font-weight: 700;
         margin-bottom: 1rem;
       }
 
       .stat-link {
-        color: #2d5016;
+        color: #1b3022;
         text-decoration: none;
         font-weight: 600;
         transition: color 0.3s ease;
 
         &:hover {
-          color: #a8e63d;
+          color: #c5a059;
         }
       }
     }
@@ -71,7 +79,7 @@
   .quick-links {
     h2 {
       font-size: 1.5rem;
-      color: #2d5016;
+      color: #1b3022;
       margin-bottom: 1.5rem;
       font-weight: 600;
     }
@@ -95,11 +103,11 @@
         text-align: center;
 
         &:hover {
-          box-shadow: 0 8px 24px rgba(45, 80, 22, 0.15);
+          box-shadow: 0 8px 24px rgba(27, 48, 34, 0.15);
           transform: translateY(-4px);
 
           h3 {
-            color: #a8e63d;
+            color: #c5a059;
           }
         }
 
@@ -109,7 +117,7 @@
         }
 
         h3 {
-          color: #2d5016;
+          color: #1b3022;
           font-size: 1.3rem;
           margin-bottom: 0.5rem;
           font-weight: 600;
@@ -122,5 +130,134 @@
         }
       }
     }
+  }
+
+  .recent-activity {
+    margin-top: 4rem;
+
+    h2 {
+      font-size: 1.5rem;
+      color: #1b3022;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+
+      .activity-widget {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+
+        .widget-header {
+          padding: 1.5rem;
+          background: #fdfbf7;
+          border-bottom: 2px solid #f5f2e8;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          h2 {
+            margin-bottom: 0;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+
+          .view-all {
+            color: #1b3022;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+
+            &:hover {
+              color: #c5a059;
+            }
+          }
+        }
+
+        .activity-list {
+          padding: 0.5rem 0;
+
+          .activity-item {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+
+            &:last-child {
+              border-bottom: none;
+            }
+
+            &:hover {
+              background: #fdfbf7;
+            }
+
+            .activity-info {
+              h4 {
+                margin: 0 0 0.25rem 0;
+                color: #333;
+                font-size: 1rem;
+                font-weight: 600;
+              }
+
+              .activity-meta {
+                font-size: 0.8rem;
+                color: #888;
+              }
+
+              .activity-preview {
+                font-size: 0.9rem;
+                color: #666;
+                margin: 0.25rem 0;
+                line-height: 1.4;
+              }
+            }
+
+            .status-badge {
+              padding: 0.25rem 0.75rem;
+              border-radius: 20px;
+              font-size: 0.75rem;
+              font-weight: 700;
+              text-transform: uppercase;
+
+              &.status-published {
+                background: #e8f5e9;
+                color: #2e7d32;
+              }
+
+              &.status-draft {
+                background: #fff3e0;
+                color: #ef6c00;
+              }
+
+              &.status-archived {
+                background: #efebe9;
+                color: #4e342e;
+              }
+            }
+          }
+
+          .no-activity {
+            padding: 2rem;
+            color: #999;
+            text-align: center;
+            font-style: italic;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-content .recent-activity .activity-grid {
+    grid-template-columns: 1fr;
   }
 }
